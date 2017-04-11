@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11-abr-2014 11:31:45 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="model.Cliente" table="cliente" schema="public">
+    <id name="id" type="long">
+      <column name="id"/>
+      <generator class="sequence">
+        <param name="sequence">cliente_id_seq</param>
+      </generator>
+    </id>
+        <many-to-one name="ciudad" class="model.Ciudad" fetch="join">
+            <column name="ciudad_id" not-null="true" />
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column name="nombre" length="60" not-null="true" />
+        </property>
+        <property name="documento" type="string">
+            <column name="documento" length="15" not-null="true" />
+        </property>
+        <property name="telefono" type="string">
+            <column name="telefono" length="30" />
+        </property>
+        <property name="direccion" type="string">
+            <column name="direccion" length="60" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="80" />
+        </property>
+    </class>
+</hibernate-mapping>
